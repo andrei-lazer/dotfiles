@@ -20,12 +20,6 @@ keymap.set("n", "Y", "y$")
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
 keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
 
--- window management
--- keymap.set("n", "<C-h>", "<C-w>h")
--- keymap.set("n", "<C-j>", "<C-w>j")
--- keymap.set("n", "<C-k>", "<C-w>k")
--- keymap.set("n", "<C-l>", "<C-w>l")
-
 keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
 keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
@@ -64,9 +58,7 @@ vim.keymap.set({ "n" }, "<A-p>", "", {
 
 -- lsp keymaps
 keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>") -- show lsp definitions
-
 keymap.set("n", "gD", vim.lsp.buf.declaration) -- go to declaration
-
 keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action) -- see available code actions, in visual mode will apply to selection
 keymap.set("n", "<leader>rn", vim.lsp.buf.rename) -- smart rename
 keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>") -- show  diagnostics for file
@@ -75,3 +67,5 @@ keymap.set("n", "[d", vim.diagnostic.goto_prev) -- jump to previous diagnostic i
 keymap.set("n", "]d", vim.diagnostic.goto_next) -- jump to next diagnostic in buffer
 keymap.set("n", "K", vim.lsp.buf.hover) -- show documentation for what is under cursor
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
+keymap.set("n", "<leader>gf", vim.lsp.buf.format) -- format the current buffer
+-- 
