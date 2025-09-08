@@ -1,0 +1,8 @@
+[user]
+	email = andrei.lazer319@gmail.com
+	name = andrei-lazer
+	password = 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
+[credential]
+	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+[init]
+	defaultBranch = main
