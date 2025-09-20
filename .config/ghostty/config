@@ -1,0 +1,3 @@
+font-family = JetBrainsMono NF
+maximize = true
+command = /usr/bin/zsh
