@@ -1,0 +1,19 @@
+#!/bin/bash
+
+CATEGORIES=(
+	"UNI"
+	"JOBS"
+	"PROJECTS"
+	"PERSONAL"
+	"WASTED"
+	"STOP"
+)
+
+selected=$(printf "%s\n" "${CATEGORIES[@]}" | fzf)
+if [[ -n "$selected" && " ${CATEGORIES[@]} " =~ " $selected " ]]; then
+	if [[ "$selected" == "STOP" ]]; then
+		timew stop
+	else
+		timew start $selected
+	fi
+fi

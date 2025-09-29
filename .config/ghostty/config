@@ -1,3 +1,4 @@
 font-family = JetBrainsMono NF
+theme = Rose Pine
 maximize = true
 command = /usr/bin/zsh

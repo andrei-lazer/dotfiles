@@ -1,2 +1,2 @@
 #!/bin/bash
-rsync -avh --progress --delete ~/Music/iPod/Music/ /run/media/alazer/ANDRE_S\ IPO/Music/
+rsync -avh --progress --delete ~/Music/iPod/ /run/media/alazer/ANDRE_S\ IPO/Music/

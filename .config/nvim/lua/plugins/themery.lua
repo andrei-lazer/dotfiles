@@ -1,12 +1,11 @@
 return
 {
 	{ 'sainnhe/everforest' },
+	{ 'ellisonleao/gruvbox.nvim' },
+	{ 'folke/tokyonight.nvim' },
+	{ 'rose-pine/neovim' },
+	{ "EdenEast/nightfox.nvim" },
 	{
-		'ellisonleao/gruvbox.nvim',
-		priority = 1000,
-		config = true
-	},
- 	{
 		"zaldih/themery.nvim",
 		lazy = false,
 		config = function()

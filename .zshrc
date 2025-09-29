@@ -91,6 +91,7 @@ eval "$(zoxide init --cmd cd zsh)"
 # aliases
 alias ls='ls --color'
 alias c='clear'
+alias tm='time-manager'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
