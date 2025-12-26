@@ -5,7 +5,7 @@ return {
       keymaps = {
         ["<C-l>"] = false,
         ["<C-h>"] = false,
-        ["yp"] = require("oil.actions").copy_entry_path,
+        ["<C-n>"] = "actions.refresh",
       },
     })
 

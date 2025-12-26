@@ -16,7 +16,7 @@ return
 					["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
 					["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
 					["<Esc>"] = cmp.mapping.abort(), -- close completion window
-					["<Tab>"] = cmp.mapping.confirm({ select = true }),
+					-- ["<Tab>"] = cmp.mapping.confirm({ select = true }),
 				}),
 				-- sources for autocompletion
 				sources = cmp.config.sources({

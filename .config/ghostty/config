@@ -1,4 +1,4 @@
-font-family = JetBrainsMono NF
+font-family = JetBrains Mono NF
 theme = Rose Pine
 maximize = true
 command = /usr/bin/zsh

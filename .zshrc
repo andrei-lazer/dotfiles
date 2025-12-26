@@ -42,6 +42,8 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
+# python venv stuffs
+source ~/.local/scripts/venv_wrapper.zsh
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
@@ -98,4 +100,9 @@ alias tm='time-manager'
 
 # path modifications
 export PATH=$PATH:~/.local/bin
-export PATH=$PATH:~/scripts/
+export PATH=$PATH:~/.local/scripts/
+export XDG_DATA_HOME=~/.local/share
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -8,7 +8,11 @@
 ## Requirements
 - `ripgrep`
 - `fzf`
+- `fd`
 - timewarrior (`timew`)
+
+Fedora install:
+`sudo dnf install ripgrep fzf fd timew`
 
 
 ## LSP Installs

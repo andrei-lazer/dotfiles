@@ -7,9 +7,8 @@ opt.number = true -- shows absolute line number on cursor line (when relative nu
 -- tabs & indentation
 opt.tabstop = 4 -- 4 spaces for tabs
 opt.shiftwidth = 4 -- 4 spaces for indent width
-opt.expandtab = false -- expand tab to spaces
+opt.expandtab = true -- expand tab to spaces
 opt.autoindent = false -- copy indent from current line when starting new one
-opt.cindent = false
 
 -- line wrapping
 opt.wrap = true -- enable line wrapping
@@ -20,8 +19,6 @@ opt.smartcase = true -- if you include mixed case in your search, assumes you wa
 
 -- cursor line
 opt.cursorline = true -- highlight the current cursor line
-
--- appearance
 
 -- turn on termguicolors for nightfly colorscheme to work
 -- (have to use iterm2 or any other true color terminal)
@@ -50,3 +47,7 @@ vim.cmd("set nofoldenable")
 vim.cmd("autocmd bufreadpre *.tex setlocal textwidth=100")
 vim.cmd("autocmd bufreadpre *.norg setlocal textwidth=100")
 vim.cmd("autocmd bufreadpre *.md setlocal textwidth=100")
+vim.cmd("autocmd bufreadpre *.typ setlocal textwidth=100")
+
+-- virtual env?
+vim.g.python3_host_prog=vim.fn.expand("~/.venv/neovim/bin/python3")
