@@ -1,10 +1,7 @@
-return {
-    'itchyny/lightline.vim',
-    config = function ()
-        vim.cmd([[
-            let g:lightline = {
-                  \ 'colorscheme': 'rosepine',
-                  \ }
-        ]])
-    end
-}
+vim.pack.add({gh("itchyny/lightline.vim")})
+
+vim.cmd([[
+let g:lightline = {
+    \ 'colorscheme': 'rosepine',
+    \ }
+    ]])
