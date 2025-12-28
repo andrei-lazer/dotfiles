@@ -13,8 +13,6 @@ vim.pack.add({gh("nvim-telescope/telescope-fzf-native.nvim")}, {
   },
 })
 
-vim.pack.add({gh("nvim-tree/nvim-web-devicons")})
-
 -- main package
 vim.pack.add({ gh("nvim-telescope/telescope.nvim") },
 {

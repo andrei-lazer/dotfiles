@@ -9,3 +9,7 @@ require("mini.completion").setup({})
 
 vim.pack.add{ gh("nvim-mini/mini.pairs") }
 require("mini.pairs").setup({})
+
+vim.pack.add{ gh("nvim-mini/mini.icons") }
+require("mini.icons").setup({})
+

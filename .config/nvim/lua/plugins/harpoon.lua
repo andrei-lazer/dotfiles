@@ -4,5 +4,6 @@ vim.pack.add({
         version = "harpoon2" 
     }
 })
+
 local harpoon = require("harpoon")
 harpoon:setup()

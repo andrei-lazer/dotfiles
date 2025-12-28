@@ -1,3 +1,4 @@
+local vim = vim
 local keymap = vim.keymap -- for conciseness
 
 -- C-u and C-d put cursor in middle of page
@@ -24,21 +25,33 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 keymap.set("n", "gD", vim.lsp.buf.declaration)                         -- go to declaration
 keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action)        -- see available code actions, in visual mode will apply to selection
 keymap.set("n", "<leader>rn", vim.lsp.buf.rename)                      -- smart rename
-keymap.set("n", "<leader>d", vim.diagnostic.open_float)                -- show diagnostics for line
+keymap.set('n', '<leader>d', function()
+    -- toggles the virtual line diagnostics
+    local new_config
+    if vim.diagnostic.config().virtual_lines == false then
+        new_config = { current_line = true }
+    else
+        new_config = false
+    end
+    vim.diagnostic.config { virtual_lines = new_config }
+end, { desc = 'Toggle diagnostic virtual lines and virtual text' })
+
 keymap.set("n", "[d", vim.diagnostic.goto_prev)                        -- jump to previous diagnostic in buffer
 keymap.set("n", "]d", vim.diagnostic.goto_next)                        -- jump to next diagnostic in buffer
 keymap.set("n", "K", vim.lsp.buf.hover)                                -- show documentation for what is under cursor
 keymap.set("n", "<leader>rs", ":LspRestart<CR>")                       -- mapping to restart lsp if necessary
 keymap.set("n", "<leader>gf", vim.lsp.buf.format)                      -- format the current buffer
 
+-- scrolling through pop up menu (pum)
+vim.keymap.set("i", "<C-j>", function()
+  return vim.fn.pumvisible() == 1 and "<C-n>" or "<C-j>"
+end, { expr = true })
+
+vim.keymap.set("i", "<C-k>", function()
+  return vim.fn.pumvisible() == 1 and "<C-p>" or "<C-k>"
+end, { expr = true })
+
 ------------ PLUGIN KEYBINDS ------------
-require("oil").setup({
-    keymaps = {
-        ["<C-l>"] = false,
-        ["<C-h>"] = false,
-        ["<C-n>"] = "actions.refresh",
-    },
-})
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>") -- zen mode + twilight
@@ -63,13 +76,5 @@ vim.keymap.set("n", "<M-j>", function() harpoon:list():select(2) end)
 vim.keymap.set("n", "<M-k>", function() harpoon:list():select(3) end)
 vim.keymap.set("n", "<M-l>", function() harpoon:list():select(4) end)
 
--- mini.completion
-vim.keymap.set("i", "<C-j>", function()
-  return vim.fn.pumvisible() == 1 and "<C-n>" or "<C-j>"
-end, { expr = true })
-
-vim.keymap.set("i", "<C-k>", function()
-  return vim.fn.pumvisible() == 1 and "<C-p>" or "<C-k>"
-end, { expr = true })
-
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
