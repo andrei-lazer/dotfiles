@@ -16,6 +16,9 @@ opt.autoindent = false -- copy indent from current line when starting new one
 
 opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 
+opt.undofile = true
+vim.opt.undodir = vim.fn.expand('~/.config/nvim/undo') -- Sets directory for undo files
+
 opt.ignorecase = true -- ignore case when searching
 opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
 

@@ -1,2 +1,2 @@
-vim.pack.add{ gh("mason-org/mason.nvim") }
+vim.pack.add{ GH("mason-org/mason.nvim") }
 require("mason").setup({})

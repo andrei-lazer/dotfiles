@@ -1,1 +1,1 @@
-vim.pack.add{gh('mbbill/undotree')}
+vim.pack.add{GH('mbbill/undotree')}

@@ -1,15 +1,15 @@
-vim.pack.add{ gh('nvim-mini/mini.ai') }
+vim.pack.add{ GH('nvim-mini/mini.ai') }
 require("mini.ai").setup({});
 
-vim.pack.add{ gh("nvim-mini/mini.surround") }
+vim.pack.add{ GH("nvim-mini/mini.surround") }
 require("mini.surround").setup({})
 
-vim.pack.add{ gh("nvim-mini/mini.completion") }
+vim.pack.add{ GH("nvim-mini/mini.completion") }
 require("mini.completion").setup({})
 
-vim.pack.add{ gh("nvim-mini/mini.pairs") }
+vim.pack.add{ GH("nvim-mini/mini.pairs") }
 require("mini.pairs").setup({})
 
-vim.pack.add{ gh("nvim-mini/mini.icons") }
+vim.pack.add{ GH("nvim-mini/mini.icons") }
 require("mini.icons").setup({})
 

@@ -1,8 +1,8 @@
 -- dependencies
 
-vim.pack.add({gh("nvim-lua/plenary.nvim")})
+vim.pack.add({GH("nvim-lua/plenary.nvim")})
 
-vim.pack.add({gh("nvim-telescope/telescope-fzf-native.nvim")}, {
+vim.pack.add({GH("nvim-telescope/telescope-fzf-native.nvim")}, {
   hooks = {
     post_install = function(ctx)
       vim.system({ "make" }, { cwd = ctx.dir }):wait()
@@ -14,7 +14,7 @@ vim.pack.add({gh("nvim-telescope/telescope-fzf-native.nvim")}, {
 })
 
 -- main package
-vim.pack.add({ gh("nvim-telescope/telescope.nvim") },
+vim.pack.add({ GH("nvim-telescope/telescope.nvim") },
 {
     branch = "0.1.x",
 })

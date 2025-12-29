@@ -1,10 +1,9 @@
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
--- only useful in this file - DELETE LATER
-vim.keymap.set("n", "<leader>o", ":update<CR> :source<CR>")
+-- source the nvim config
+vim.keymap.set("n", "<leader>o", ":update<CR> :source ~/.config/nvim/init.lua<CR>")
 
 -- convenience function since vim.pack.add needs the full url
-gh = function(x)
+GH = function(x)
     if x then
         return "https://github.com/" .. x
     end
@@ -14,7 +13,6 @@ end
 
 require("plugins.mini")
 require("plugins.oil")
-require("plugins.rosepine")
 require("plugins.tmux-nav")
 require("plugins.zen-mode")
 require("plugins.tele")
@@ -30,6 +28,9 @@ require("plugins.alpha")
 require("plugins.typst-preview")
 require("plugins.undotree")
 require("plugins.lspconfig")
+
+require("colors.rose-pine")
+-- require("colors.gruvbox")
 
 ------------------------------ END PLUGINS ------------------------
 

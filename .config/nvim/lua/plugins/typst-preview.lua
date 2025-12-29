@@ -1,6 +1,6 @@
 vim.pack.add{ 
     {
-        src = gh("chomosuke/typst-preview.nvim"),
+        src = GH("chomosuke/typst-preview.nvim"),
         version = vim.version.range("^1") -- this means any 1.x.x version
     }
 }

@@ -1,4 +1,4 @@
-vim.pack.add{gh("goolord/alpha-nvim")}
+vim.pack.add{GH("goolord/alpha-nvim")}
 
 local alpha = require("alpha")
 local theta = require("alpha.themes.theta")
