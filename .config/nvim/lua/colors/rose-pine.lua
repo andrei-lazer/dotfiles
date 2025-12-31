@@ -1,3 +1,3 @@
 -- theme
-vim.pack.add({"https://github.com/rose-pine/neovim"})
+vim.pack.add{GH"rose-pine/neovim"}
 vim.cmd("colorscheme rose-pine")

@@ -1,5 +1,5 @@
-vim.pack.add({"https://github.com/folke/twilight.nvim"})
-vim.pack.add({"https://github.com/folke/zen-mode.nvim"})
+vim.pack.add{GH"folke/twilight.nvim"}
+vim.pack.add{GH"folke/zen-mode.nvim"}
 
 require("zen-mode").setup({
     plugins = {

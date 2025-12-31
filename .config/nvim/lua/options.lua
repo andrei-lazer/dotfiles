@@ -1,5 +1,23 @@
 local opt = vim.opt
 
+-- virtual text and nice signs
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = '',
+            [vim.diagnostic.severity.WARN] = '',
+            [vim.diagnostic.severity.INFO]  = "",
+            [vim.diagnostic.severity.HINT]  = "",
+        },
+        linehl = {
+            [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+        },
+        numhl = {
+            [vim.diagnostic.severity.WARN] = 'WarningMsg',
+        },
+    },
+})
+
 opt.cursorline = true -- highlight the current cursor line
 
 opt.number = true
@@ -17,7 +35,7 @@ opt.autoindent = false -- copy indent from current line when starting new one
 opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 
 opt.undofile = true
-vim.opt.undodir = vim.fn.expand('~/.config/nvim/undo') -- Sets directory for undo files
+vim.opt.undodir = vim.fn.expand('~/.config/nvim/.undo') -- Sets directory for undo files
 
 opt.ignorecase = true -- ignore case when searching
 opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
@@ -30,9 +48,6 @@ opt.termguicolors = true
 
 opt.colorcolumn = "100"
 
--- virtual line beneath errors for diagnostics
-vim.diagnostic.config({ virtual_text = false, virtual_lines = { current_line = true }, })
-
 -- auto wrap text
 vim.cmd("autocmd bufreadpre *.tex setlocal textwidth=100")
 vim.cmd("autocmd bufreadpre *.norg setlocal textwidth=100")
@@ -44,5 +59,3 @@ vim.api.nvim_create_autocmd("FileType",{
     pattern = "markdown,typst",
     command = "setlocal spell wrap"
 })
-
-

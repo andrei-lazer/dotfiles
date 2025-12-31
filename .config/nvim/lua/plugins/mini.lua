@@ -1,15 +1,27 @@
-vim.pack.add{ GH('nvim-mini/mini.ai') }
-require("mini.ai").setup({});
+-- all have the same format, so doing it with a for loop
+local packages = {
+    "ai",
+    "surround",
+    "completion",
+    "pairs",
+    "icons",
+    "splitjoin",
+    "bracketed"
+}
 
-vim.pack.add{ GH("nvim-mini/mini.surround") }
-require("mini.surround").setup({})
+local configs = {
+    splitjoin = {
+        mappings = {
+            toggle = "<leader>m"
+        }
+    }
+}
 
-vim.pack.add{ GH("nvim-mini/mini.completion") }
-require("mini.completion").setup({})
-
-vim.pack.add{ GH("nvim-mini/mini.pairs") }
-require("mini.pairs").setup({})
-
-vim.pack.add{ GH("nvim-mini/mini.icons") }
-require("mini.icons").setup({})
-
+for _, p in pairs(packages) do
+    vim.pack.add{ GH("nvim-mini/mini." .. p)}
+    if configs[p] ~= nil then
+        require("mini." .. p).setup(configs[p])
+    else
+        require("mini." .. p).setup({})
+    end
+end

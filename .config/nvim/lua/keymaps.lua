@@ -22,9 +22,9 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 
 -- lsp keymaps
-keymap.set("n", "gD", vim.lsp.buf.declaration)                         -- go to declaration
-keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action)        -- see available code actions, in visual mode will apply to selection
-keymap.set("n", "<leader>rn", vim.lsp.buf.rename)                      -- smart rename
+keymap.set("n", "gD", vim.lsp.buf.declaration)                  -- go to declaration
+keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action) -- see available code actions, in visual mode will apply to selection
+keymap.set("n", "<leader>rn", vim.lsp.buf.rename)               -- smart rename
 keymap.set('n', '<leader>d', function()
     -- toggles the virtual line diagnostics
     local new_config
@@ -36,20 +36,46 @@ keymap.set('n', '<leader>d', function()
     vim.diagnostic.config { virtual_lines = new_config }
 end, { desc = 'Toggle diagnostic virtual lines and virtual text' })
 
-keymap.set("n", "[d", vim.diagnostic.goto_prev)                        -- jump to previous diagnostic in buffer
-keymap.set("n", "]d", vim.diagnostic.goto_next)                        -- jump to next diagnostic in buffer
-keymap.set("n", "K", vim.lsp.buf.hover)                                -- show documentation for what is under cursor
-keymap.set("n", "<leader>rs", ":LspRestart<CR>")                       -- mapping to restart lsp if necessary
-keymap.set("n", "<leader>gf", vim.lsp.buf.format)                      -- format the current buffer
+keymap.set("n", "K", vim.lsp.buf.hover)           -- show documentation for what is under cursor
+keymap.set("n", "<leader>rs", ":LspRestart<CR>")  -- mapping to restart lsp if necessary
+keymap.set("n", "<leader>gf", vim.lsp.buf.format) -- format the current buffer
 
 -- scrolling through pop up menu (pum)
 vim.keymap.set("i", "<C-j>", function()
-  return vim.fn.pumvisible() == 1 and "<C-n>" or "<C-j>"
+    return vim.fn.pumvisible() == 1 and "<C-n>" or "<C-j>"
 end, { expr = true })
 
 vim.keymap.set("i", "<C-k>", function()
-  return vim.fn.pumvisible() == 1 and "<C-p>" or "<C-k>"
+    return vim.fn.pumvisible() == 1 and "<C-p>" or "<C-k>"
 end, { expr = true })
+
+-- clear packages
+local function pack_clean()
+    local active_plugins = {}
+    local unused_plugins = {}
+
+    for _, plugin in ipairs(vim.pack.get()) do
+        active_plugins[plugin.spec.name] = plugin.active
+    end
+
+    for _, plugin in ipairs(vim.pack.get()) do
+        if not active_plugins[plugin.spec.name] then
+            table.insert(unused_plugins, plugin.spec.name)
+        end
+    end
+
+    if #unused_plugins == 0 then
+        print("No unused plugins.")
+        return
+    end
+
+    local choice = vim.fn.confirm("Remove unused plugins?", "&Yes\n&No", 2)
+    if choice == 1 then
+        vim.pack.del(unused_plugins)
+    end
+end
+
+vim.api.nvim_create_user_command("ClearPlugins", pack_clean, {})
 
 ------------ PLUGIN KEYBINDS ------------
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
@@ -61,7 +87,7 @@ keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy f
 keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 keymap.set("n", "<leader>fw", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 keymap.set("n", "<leader>fb", require("telescope.builtin").buffers, { desc = "Find buffers" })
-keymap.set("n", "<leader>ft", "<cmd>Telescope<cr>", {desc = "Start telescope"})
+keymap.set("n", "<leader>ft", "<cmd>Telescope<cr>", { desc = "Start telescope" })
 keymap.set("n", "<leader>th", require("telescope.builtin").colorscheme, { desc = "List colorschemes" })
 keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>") -- show  diagnostics for file
 keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>")            -- show lsp definitions
@@ -69,12 +95,15 @@ keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>")            -- show l
 -- harpoon
 local harpoon = require("harpoon")
 vim.keymap.set("n", "<leader>h", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end) -- open harpoon list
-vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end) -- add current file to harpoon list
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)                         -- add current file to harpoon list
 
-vim.keymap.set("n", "<M-h>", function() harpoon:list():select(1) end) -- go to 1st-4th selection using Alt+hjkl
+vim.keymap.set("n", "<M-h>", function() harpoon:list():select(1) end)                         -- go to 1st-4th selection using Alt+hjkl
 vim.keymap.set("n", "<M-j>", function() harpoon:list():select(2) end)
 vim.keymap.set("n", "<M-k>", function() harpoon:list():select(3) end)
 vim.keymap.set("n", "<M-l>", function() harpoon:list():select(4) end)
 
-vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
+-- venv-selector
+vim.keymap.set("n", "<leader>vs", "<cmd>VenvSelect<cr>")
+vim.keymap.set("n", "<leader>vc", "<cmd>VenvSelectCached<cr>")

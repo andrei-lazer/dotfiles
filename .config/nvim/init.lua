@@ -2,6 +2,8 @@ vim.g.mapleader = " "
 -- source the nvim config
 vim.keymap.set("n", "<leader>o", ":update<CR> :source ~/.config/nvim/init.lua<CR>")
 
+
+
 -- convenience function since vim.pack.add needs the full url
 GH = function(x)
     if x then
@@ -27,7 +29,10 @@ require("plugins.markdown")
 require("plugins.alpha")
 require("plugins.typst-preview")
 require("plugins.undotree")
+
 require("plugins.lspconfig")
+
+require("plugins.venv-selector")
 
 require("colors.rose-pine")
 -- require("colors.gruvbox")
