@@ -1,12 +1,12 @@
 -- all have the same format, so doing it with a for loop
 local packages = {
-    "ai",
-    "surround",
-    "completion",
-    "pairs",
+    "ai", -- enhances the built-in text objects, e.g. diq deletes inside any types of quotes
+    "surround", -- shortcuts for surrounding text - use s + r/a
+    "completion", -- automatic completion
+    "pairs", -- auto pairs for quotes and brackets
     "icons",
-    "splitjoin",
-    "bracketed"
+    "splitjoin", -- splits and joins array like objects (try with <leader>m)
+    "bracketed" -- go back and forth with square brackets
 }
 
 local configs = {
