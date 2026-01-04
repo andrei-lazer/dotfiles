@@ -1,4 +1,4 @@
 font-family = JetBrains Mono NF
-theme = Rose Pine
+theme = /home/alazer/.config/ghostty/ashen
 maximize = true
 command = /usr/bin/zsh
