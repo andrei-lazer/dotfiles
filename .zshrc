@@ -93,7 +93,13 @@ eval "$(zoxide init --cmd cd zsh)"
 # aliases
 alias ls='ls --color'
 alias c='clear'
-alias tm='time-manager'
+# aliases: tmux
+alias tn='tmux new-session -s'
+alias tl='tmux list-session'
+alias ta='tmux attach-session'
+alias td='tmux-delete'
+# aliases: git
+alias g='g'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -110,3 +116,5 @@ export NVM_DIR="$HOME/.nvm"
 
 # nvim as a man pager
 export MANPAGER="nvim +Man!"
+
+. "$HOME/.local/share/../bin/env"

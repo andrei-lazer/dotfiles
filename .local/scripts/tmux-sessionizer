@@ -1,9 +1,18 @@
 #!/bin/bash
 
+DIRS=(
+    "$HOME/Projects"
+    "$HOME/Notes"
+    "$HOME/dotfiles"
+    )
+
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/Projects ~/Notes -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ${DIRS[@]} -mindepth 1 -maxdepth 1 -type d \
+    | sed "s|^$HOME/||" \
+    | fzf)
+    [[ $selected ]] && selected="$HOME/$selected"
 fi
 
 if [[ -z $selected ]]; then

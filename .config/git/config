@@ -1,0 +1,18 @@
+[user]
+	email = andrei.lazer319@gmail.com
+	name = andrei-lazer
+[alias]
+    st = status --short
+    lg = log -1
+[init]
+	defaultBranch = main
+[core]
+    compression = 9
+    whitespace = error
+[status]
+    branch = true
+    showStas = true
+    showUntrackedFiles = true
+[push]
+    autoSetupRemote = true
+    default = current

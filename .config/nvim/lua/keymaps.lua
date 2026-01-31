@@ -16,6 +16,8 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })     
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })                 --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab]]--
 
+
+
 -- Moving text in visual mode
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -25,20 +27,11 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 keymap.set("n", "gD", vim.lsp.buf.declaration)                  -- go to declaration
 keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action) -- see available code actions, in visual mode will apply to selection
 keymap.set("n", "<leader>rn", vim.lsp.buf.rename)               -- smart rename
-keymap.set('n', '<leader>d', function()
-    -- toggles the virtual line diagnostics
-    local new_config
-    if vim.diagnostic.config().virtual_lines == false then
-        new_config = { current_line = true }
-    else
-        new_config = false
-    end
-    vim.diagnostic.config { virtual_lines = new_config }
-end, { desc = 'Toggle diagnostic virtual lines and virtual text' })
 
+keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
 keymap.set("n", "K", vim.lsp.buf.hover)           -- show documentation for what is under cursor
-keymap.set("n", "<leader>rs", ":LspRestart<CR>")  -- mapping to restart lsp if necessary
 keymap.set("n", "<leader>gf", vim.lsp.buf.format) -- format the current buffer
+keymap.set("n", "<leader>rs", "<cmd>lsp restart<cr>")
 
 -- scrolling through pop up menu (pum)
 vim.keymap.set("i", "<C-j>", function()
@@ -77,6 +70,8 @@ end
 
 vim.api.nvim_create_user_command("ClearPlugins", pack_clean, {})
 
+vim.api.nvim_create_user_command("Isort", "!isort %", {desc = "Sort the current Python file's imports"})
+
 ------------ PLUGIN KEYBINDS ------------
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
@@ -89,7 +84,7 @@ keymap.set("n", "<leader>fw", "<cmd>Telescope grep_string<cr>", { desc = "Find s
 keymap.set("n", "<leader>fb", require("telescope.builtin").buffers, { desc = "Find buffers" })
 keymap.set("n", "<leader>ft", "<cmd>Telescope<cr>", { desc = "Start telescope" })
 keymap.set("n", "<leader>th", require("telescope.builtin").colorscheme, { desc = "List colorschemes" })
-keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>") -- show  diagnostics for file
+keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics<CR>") -- show  diagnostics for file
 keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>")            -- show lsp definitions
 
 -- harpoon
@@ -107,3 +102,15 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 -- venv-selector
 vim.keymap.set("n", "<leader>vs", "<cmd>VenvSelect<cr>")
 vim.keymap.set("n", "<leader>vc", "<cmd>VenvSelectCached<cr>")
+
+-- toggleterm
+vim.keymap.set("t", "<C-Space>", "<C-\\><C-n><cmd>ToggleTerm<cr>")
+vim.keymap.set("n", "<C-Space>", "<cmd>ToggleTerm<cr>")
+
+
+vim.keymap.del("n", "s")
+vim.keymap.set({ "n", "x", "o" }, "s", function() require("flash").jump() end, {desc = "Flash"} )
+vim.keymap.set({ "n", "x", "o" }, "S", function() require("flash").treesitter() end, {desc = "Flash Treesitter"})
+vim.keymap.set("o", "r", function() require("flash").remote() end, {desc = "Remote Flash"})
+vim.keymap.set({ "o", "x" }, "R", function() require("flash").treesitter_search() end, {desc = "Treesitter Search"})
+vim.keymap.set("c", "<c-s>", function() require("flash").toggle() end, {desc = "Toggle Flash Search"})

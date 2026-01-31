@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ -z "$TMUX" ]]; then
+    tmux kill-session -t $(tmux list-session -F \#{session_name} | fzf)
+else
+    echo "Detach from tmux session first."
+fi

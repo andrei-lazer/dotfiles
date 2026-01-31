@@ -9,10 +9,8 @@ vim.diagnostic.config({
             [vim.diagnostic.severity.INFO]  = "",
             [vim.diagnostic.severity.HINT]  = "",
         },
-        linehl = {
-            [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
-        },
         numhl = {
+            [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
             [vim.diagnostic.severity.WARN] = 'WarningMsg',
         },
     },
@@ -46,7 +44,9 @@ opt.splitbelow = true -- split horizontal window to the bottom
 opt.signcolumn = "yes" -- show sign column so that text doesn't shift
 opt.termguicolors = true
 
-opt.colorcolumn = "100"
+opt.colorcolumn = "101"
+
+opt.scrolloff = 10
 
 -- auto wrap text
 vim.cmd("autocmd bufreadpre *.tex setlocal textwidth=100")

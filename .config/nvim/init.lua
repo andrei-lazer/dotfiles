@@ -16,7 +16,6 @@ require("plugins.oil")
 require("plugins.tmux-nav")
 require("plugins.zen-mode")
 require("plugins.tele")
-require("plugins.lualine")
 require("plugins.git")
 require("plugins.harpoon")
 require("plugins.which-key")
@@ -29,13 +28,14 @@ require("plugins.typst-preview")
 require("plugins.undotree")
 require("plugins.lspconfig")
 require("plugins.venv-selector")
+require("plugins.flash")
 
-require("colors.rose-pine")
-require("colors.gruvbox")
+-- require("colors.rose-pine")
+-- require("colors.gruvbox")
 require("colors.ashen")
 vim.cmd("colorscheme ashen")
 
--- require("colors.gruvbox")
+require("plugins.lualine") -- needs to be loaded after colorschee
 
 ------------------------------ END PLUGINS ------------------------
 

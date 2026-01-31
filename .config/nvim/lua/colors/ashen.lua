@@ -1,1 +1,1 @@
-vim.pack.add{ GH"ficcdaf/ashen.nvim" }
+vim.pack.add{"https://codeberg.org/ficd/ashen.nvim"}
