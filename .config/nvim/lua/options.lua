@@ -59,3 +59,5 @@ vim.api.nvim_create_autocmd("FileType",{
     pattern = "markdown,typst",
     command = "setlocal spell wrap"
 })
+
+vim.cmd('cnoreabbrev w update')
