@@ -1,2 +1,4 @@
 .config/nvim/.undo
 venv/*
+
+**/.claude/settings.local.json

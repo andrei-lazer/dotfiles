@@ -118,3 +118,6 @@ export NVM_DIR="$HOME/.nvm"
 export MANPAGER="nvim +Man!"
 
 . "$HOME/.local/share/../bin/env"
+
+# opencode
+export PATH=/home/alazer/.opencode/bin:$PATH
