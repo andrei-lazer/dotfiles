@@ -9,7 +9,7 @@
 - `ripgrep`
 - `fzf`
 - `fd`
-- timewarrior (`timew`)
+- `zsh`
 
 Fedora install:
 `sudo dnf install ripgrep fzf fd timew`
@@ -38,3 +38,20 @@ nvim
 Most files are self-explanatory. LSP configurations are dealt with using nvim-lspconfig, but custom
 configuration needs to be put inside the lsp/ directory. LSPs should be installed using Mason or a
 package manager.
+
+## zsh
+
+I'm using [oh my zsh](https://ohmyz.sh/) with powerlevel10k.
+
+### plugins
+Currently have very minimal zsh plugins:
+- zsh-syntax-highlighting: 
+    ```sh
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    ```
+- zsh-autosuggestions:
+    ```sh
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    ```
+
+

@@ -2,3 +2,5 @@ font-family = JetBrains Mono NF
 theme = /home/alazer/.config/ghostty/ashen
 maximize = true
 command = /usr/bin/zsh
+
+keybind = ctrl+shift+n=next_tab
