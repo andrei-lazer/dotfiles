@@ -28,7 +28,6 @@ require("plugins.typst-preview")
 require("plugins.undotree")
 require("plugins.lspconfig")
 require("plugins.venv-selector")
-require("plugins.flash")
 
 -- require("colors.rose-pine")
 -- require("colors.gruvbox")

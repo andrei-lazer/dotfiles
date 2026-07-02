@@ -11,5 +11,9 @@ export PATH=$PATH:~/.local/scripts/
 export PATH=$PATH:~/.local/share/bob/nvim-bin
 export PATH=$PATH:~/.cargo/bin/
 
+export NOTE_PATH=~/Documents/"Main Vault"/TODO.md
+
 # python venv shortcuts
 source ~/.local/scripts/venv_wrapper.zsh
+
+

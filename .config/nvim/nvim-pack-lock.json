@@ -8,6 +8,10 @@
       "rev": "bfb04bd50b69d863469b2deb9fb361cf0d945ba7",
       "src": "https://codeberg.org/ficd/ashen.nvim"
     },
+    "bullets.vim": {
+      "rev": "3f667eeca58bd4ba411b41edefef51e7fed1a2b1",
+      "src": "https://github.com/bullets-vim/bullets.vim"
+    },
     "fidget.nvim": {
       "rev": "889e2e96edef4e144965571d46f7a77bcc4d0ddf",
       "src": "https://github.com/j-hui/fidget.nvim"
@@ -48,10 +52,6 @@
     "mini.icons": {
       "rev": "bac6317300e205335df425296570d84322730067",
       "src": "https://github.com/nvim-mini/mini.icons"
-    },
-    "mini.pairs": {
-      "rev": "42387c7fe68fc0b6e95eaf37f1bb76e7bffaa0d9",
-      "src": "https://github.com/nvim-mini/mini.pairs"
     },
     "mini.splitjoin": {
       "rev": "8bd5a3d581b9f3dd3bc91fe495e210b8b0ee981d",

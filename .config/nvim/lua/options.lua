@@ -1,5 +1,7 @@
 local opt = vim.opt
 
+require("vim._core.ui2").enable()
+
 -- virtual text and nice signs
 vim.diagnostic.config({
     signs = {

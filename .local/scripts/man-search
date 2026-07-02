@@ -1,0 +1,5 @@
+#!/bin/bash
+PAGE=$(apropos . 2>/dev/null | awk '{print $1}' | sort -u | fzf --prompt="man> ")
+[[ -z "$PAGE" ]] && exit 0
+
+man "$PAGE"

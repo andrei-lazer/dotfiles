@@ -1,0 +1,12 @@
+#!/bin/bash
+#!/bin/bash
+LANG=$(curl -s cht.sh/:list | fzf --prompt="language/topic> ")
+[[ -z "$LANG" ]] && exit 0
+
+QUERY=$(echo "" | fzf --print-query --prompt="$LANG query> " --disabled | head -1)
+
+if [[ -z "$QUERY" ]]; then
+	curl -s "cht.sh/$LANG?T" | bat -l "$LANG" --paging=always
+else
+	curl -s "cht.sh/$LANG/$QUERY?T" | bat -l "$LANG" --paging=always
+fi
