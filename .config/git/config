@@ -4,6 +4,7 @@
 [alias]
     st = status --short
     lg = log -1
+    adog = log --all --decorate --oneline --graph
 [init]
 	defaultBranch = main
 [core]
