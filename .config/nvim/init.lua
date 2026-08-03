@@ -181,6 +181,20 @@ require("venv-selector").setup{
 }
 vim.keymap.set("n", "<leader>vs", "<cmd>VenvSelect<cr>")
 vim.keymap.set("n", "<leader>vc", "<cmd>VenvSelectCached<cr>")
+--- mini stuff
+vim.pack.add{
+    GH"nvim-mini/mini.ai",
+    GH"nvim-mini/mini.surround",
+    GH"nvim-mini/mini.icons",
+    GH"nvim-mini/mini.splitjoin",
+}
+
+require("mini.ai").setup()
+require("mini.surround").setup()
+require("mini.icons").setup()
+require("mini.splitjoin").setup({
+    mappings = { toggle = "<leader>m" }
+})
 
 -- === LSP & COMPLETIONS ===
 vim.pack.add({
@@ -203,7 +217,7 @@ cmp.setup({
         },
     },
     sources = {
-        default = { "lsp", "path", "buffer" },
+        default = { "path", "buffer" },
         per_filetype = {
             tex = { inherit_defaults = true, "omni" },
             bib = { inherit_defaults = true, "omni" },
