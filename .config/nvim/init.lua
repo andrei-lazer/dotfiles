@@ -61,14 +61,14 @@ end, { expr = true })
 vim.keymap.set("i", "<C-k>", function()
     return vim.fn.pumvisible() == 1 and "<C-p>" or "<C-k>"
 end, { expr = true })
--- lsp
-keymap.set("n", "gD", vim.lsp.buf.declaration)                  -- go to declaration
-keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action) -- see available code actions, in visual mode will apply to selection
-keymap.set("n", "<leader>rn", vim.lsp.buf.rename)               -- smart rename
-keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
-keymap.set("n", "K", vim.lsp.buf.hover)           -- show documentation for what is under cursor
-keymap.set("n", "<leader>gf", vim.lsp.buf.format) -- format the current buffer
-keymap.set("n", "<leader>rs", "<cmd>lsp restart<cr>")
+-- -- lsp
+-- keymap.set("n", "gD", vim.lsp.buf.declaration)                  -- go to declaration
+-- keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action) -- see available code actions, in visual mode will apply to selection
+-- keymap.set("n", "<leader>rn", vim.lsp.buf.rename)               -- smart rename
+-- keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
+-- keymap.set("n", "K", vim.lsp.buf.hover)           -- show documentation for what is under cursor
+-- keymap.set("n", "<leader>gf", vim.lsp.buf.format) -- format the current buffer
+-- keymap.set("n", "<leader>rs", "<cmd>lsp restart<cr>")
 
 -- === COMMANDS ===
 vim.cmd('cnoreabbrev w update') -- :w only writes on change
@@ -179,14 +179,11 @@ require("venv-selector").setup{
     search_venv_managers = true,
     search_workspace = false,
 }
-vim.keymap.set("n", "<leader>vs", "<cmd>VenvSelect<cr>")
-vim.keymap.set("n", "<leader>vc", "<cmd>VenvSelectCached<cr>")
+keymap.set("n", "<leader>vs", "<cmd>VenvSelect<cr>")
+keymap.set("n", "<leader>vc", "<cmd>VenvSelectCached<cr>")
 --- mini stuff
 vim.pack.add{
-    GH"nvim-mini/mini.ai",
-    GH"nvim-mini/mini.surround",
-    GH"nvim-mini/mini.icons",
-    GH"nvim-mini/mini.splitjoin",
+    GH"nvim-mini/mini.nvim",
 }
 
 require("mini.ai").setup()
@@ -195,6 +192,21 @@ require("mini.icons").setup()
 require("mini.splitjoin").setup({
     mappings = { toggle = "<leader>m" }
 })
+local minipick = require("mini.pick")
+minipick.setup{
+    mappings = {
+        move_down  = '<C-j>',
+        move_up    = '<C-k>',
+    }
+}
+local miniextra = require("mini.extra")
+miniextra.setup()
+
+keymap.set("n", "<leader>ff", function () minipick.builtin.files() end, {desc = "File fuzzy finding"})
+keymap.set("n", "<leader>fs", function () minipick.builtin.grep_live() end, {desc = "String fuzzy finding"})
+keymap.set("n", "<leader>fh", function () minipick.builtin.help() end, {desc = "Help fuzzy finding"})
+keymap.set("n", "<leader>fc", function () miniextra.pickers.commands() end, {desc = "Fuzzy find neovim commands"})
+keymap.set("n", "<leader>fk", function () miniextra.pickers.keymaps() end, {desc = "Fuzzy find neovim keymaps"})
 
 -- === LSP & COMPLETIONS ===
 vim.pack.add({
