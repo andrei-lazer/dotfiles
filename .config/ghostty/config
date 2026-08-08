@@ -1,6 +1,9 @@
 font-family = JetBrains Mono NF
 theme = /home/alazer/.config/ghostty/ashen
 maximize = true
-command = /usr/bin/zsh
+# command = /usr/bin/fish
 
 keybind = ctrl+shift+n=next_tab
+
+clipboard-read = allow
+app-notifications = no-clipboard-copy
